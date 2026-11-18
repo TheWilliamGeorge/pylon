@@ -1,0 +1,50 @@
+# benchmark.pylon - identical algorithm to benchmark.py.
+# Run it with:  python3 pylonc.py benchmark.pylon
+
+import time;
+
+# --- integer-heavy loop: sum of cubes with modulo -------------------------
+def int cube_sum(int n) {
+    int total = 0;
+    for i in range(n) {
+        total = total + (i * i) % 1000003;
+    }
+    return total;
+}
+
+# --- float-heavy loop: Riemann approximation of pi -----------------------
+def float approx_pi(int n) {
+    float h = 1.0 / n;
+    float s = 0.0;
+    for i in range(n) {
+        s = s + h / (1.0 + (h * i) * (h * i));
+    }
+    return 4.0 * s;
+}
+
+# --- recursion: naive fibonacci -------------------------------------------
+def int fib(int n) {
+    if n < 2 {
+        return n;
+    } else {
+        return fib(n - 1) + fib(n - 2);
+    }
+}
+
+# --- module top-level runs on import (Pylon has no main()) ----------------
+int N_INT = 20000000;
+int N_FLOAT = 50000000;
+int N_FIB = 32;
+
+t0 = time.time();
+r1 = cube_sum(N_INT);
+t1 = time.time();
+r2 = approx_pi(N_FLOAT);
+t2 = time.time();
+r3 = fib(N_FIB);
+t3 = time.time();
+
+print(f"[Pylon]  cube_sum({N_INT})  = {r1}   {t1 - t0:.4f}s");
+print(f"[Pylon]  approx_pi({N_FLOAT}) = {r2:.10f}   {t2 - t1:.4f}s");
+print(f"[Pylon]  fib({N_FIB})          = {r3}   {t3 - t2:.4f}s");
+print(f"[Pylon]  TOTAL                {t3 - t0:.4f}s");
