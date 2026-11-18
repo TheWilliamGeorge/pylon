@@ -12,7 +12,7 @@ straight into Cython so the hot paths run at C speed. This means that Pylon can 
 .pylon source  →  Pylon AST  →  Cython .pyx  →  C (.c)  →  native .so  →  run
 ```
 
-### Check out the documentation [here:](https://pylon-334995bc.mintlify.site/getting-started)
+**Check out the documentation [here.](https://pylon-334995bc.mintlify.site/getting-started)**
 
 ## Why
 
