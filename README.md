@@ -1,6 +1,7 @@
 # Pylon
 
-<img width="256" height="256" alt="Pylon Logo" src="https://github.com/user-attachments/assets/6cd20592-14ac-4385-9fb0-4ae364d621bf" />
+<img width="256" height="256" alt="Pylon Logo" src="https://github.com/user-attachments/assets/6f8d8c7f-ca9b-428a-a974-6cd6bd191b9a" />
+
 
 Pylon is a dialect of Python with **Java-like syntax** — braced blocks, semicolons,
 and explicit static typing — that compiles down to **Cython**, then to native C,
