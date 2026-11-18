@@ -86,7 +86,7 @@ Flags:
 
 ### Syntax
 
-Pylon looks like Java wearing a Python t-shirt:
+Pylon looks like Python wearing a Java T-Shirt - many of the features remain the same, but it has a Java-like style on top:
 
 ```python
 # Typed module-level variables
@@ -204,12 +204,3 @@ iterations is where this pays off.
 - **Constructor style**: classes use Python's `__init__`, not Java's
   `ClassName(...)`. Java-style constructors are a possible future extension.
 - Any imported Python modules must be installed on the system. Pylon does not compile these modules as well as the code (unlike a dedicated Python compiler such as Nuitka), so any lines of code using modules written purely in Python cannot receive the speed benefits of Pylon.
-
-## Files
-
-```
-pylonc.py            The translator + CLI (single file, stdlib-only).
-examples/hello.pylon The user's original example.
-examples/features.pylon  A tour of the supported types and constructs.
-README.md            This file.
-```
