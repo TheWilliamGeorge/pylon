@@ -1,0 +1,112 @@
+# features.pylon - exercise every type and most constructs
+
+import sys;
+import math;
+from math import sqrt;
+
+# --- primitive typed declarations ---
+int x = 42;
+float y = 3.14;
+complex z = 1.5 + 2.5j;
+boolean flag = True;
+string greeting = "hi";
+bytes b = b"bytes";
+bytearray ba = bytearray(b"mut"); # this is an inline comment
+list xs = [1, 2, 3];
+tuple t = (1, 2, 3);
+dict d = {"a": 1, "b": 2};
+set s = {1, 2, 3};
+frozenset fs = frozenset({4, 5, 6});
+memoryview mv = memoryview(b"abc");
+
+# --- constants ---
+const float PI = 3.14159265358979;
+const string VERSION = "0.1.0";
+
+# --- a typed function returning a primitive ---
+def int factorial(int n) {
+    if n <= 1 {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+
+# --- a function returning a list ---
+def list squares(int n) {
+    list out = [];
+    for i in range(n) {
+        out.append(i * i);
+    }
+    return out;
+}
+
+# --- a function with a boolean return ---
+def boolean is_even(int n) {
+    return (n % 2) == 0;
+}
+
+# --- string function with f-string ---
+def string describe(int n) {
+    if is_even(n) {
+        return f"{n} is even (factorial={factorial(n)})";
+    } else {
+        return f"{n} is odd (sqrt~={sqrt(float(n)):.3f})";
+    }
+}
+
+# --- class with a method ---
+class Counter {
+    def NoneType __init__(self, int start) {
+        self.count = start;
+    }
+
+    def NoneType inc(self) {
+        self.count = self.count + 1;
+    }
+
+    def int value(self) {
+        return self.count;
+    }
+}
+
+# --- try / except / finally ---
+def int safe_div(int a, int b) {
+    try {
+        return a // b;
+    } except ZeroDivisionError {
+        print("div by zero!");
+        return 0;
+    } finally {
+        pass;
+    }
+}
+
+# --- with statement ---
+def string read_first_line() {
+    string line = "";
+    with open("Pylon/hello.pylon", "r") as fh {
+        line = fh.readline().strip();
+    }
+    return line;
+}
+
+# --- main entry: Pylon has no main(); module top-level runs ---
+print(f"Pylon v{VERSION}");
+print(f"x={x} y={y} z={z} flag={flag} greeting={greeting}");
+print(f"factorial(10) = {factorial(10)}");
+print(f"squares(6) = {squares(6)}");
+print(f"describe(7) = {describe(7)}");
+print(f"describe(8) = {describe(8)}");
+print(f"safe_div(10, 2) = {safe_div(10, 2)}");
+print(f"safe_div(10, 0) = {safe_div(10, 0)}");
+
+c = Counter(100);
+c.inc();
+c.inc();
+print(f"Counter after 2 incs: {c.value()}");
+
+print(f"PI={PI}");
+print(f"tuple sum = {sum(t)}");
+print(f"set = {s}");
+print(f"hostname = {read_first_line()}");
