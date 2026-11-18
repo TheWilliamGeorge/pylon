@@ -54,15 +54,18 @@ python3 pylonc.py hello.pylon --args one two three
 
 Flags:
 
-| Flag            | Effect                                                            |
-| --------------- | ----------------------------------------------------------------- |
-| `--no-run`      | Translate + compile only; keep `.pyx`, `.c`, and `.so`.           |
-| `--emit-pyx`    | Stop after writing the `.pyx`. Implies `--no-run`.                |
-| `--show-pyx`    | Print the generated `.pyx` to stdout in addition to saving it.  |
-| `--embed`       | Build a standalone executable instead of a `.so`.                 |
-| `--keep-dir DIR`| Where to drop intermediate files (default `<stem>_build/`).      |
-| `-o NAME`       | Name of the output binary (default: same stem as the source).     |
-| `--args ...`    | Trailing args forwarded to the program as `sys.argv`.             |
+| Flag | Effect |
+| --- | --- |
+| `<source>` (positional) | Path to the `.pylon` file. Must end in `.pylon`. |
+| `-o`, `--output <name>` | Name the output binary (default: stem of source). |
+| `--keep-dir <dir>` | Directory for intermediate `.pyx`/`.c`/binary (default: `<source_dir>/<stem>_build`). |
+| `--no-run` | Compile only; do not execute. Saves `.pyx`, `.c`, binary. |
+| `--emit-pyx` | Emit the `.pyx` file only; do not compile or run. |
+| `--embed` | Build a standalone executable (links `libpython`). Default is `.so` mode. |
+| `--show-pyx` | Print the generated `.pyx` to stdout as well as writing it. |
+| `--dev` | Compile C with `-O0` instead of `-O3` (≈3× faster compile, slower runtime). For edit/compile/run loops. |
+| `--no-cache` | Force a full rebuild; ignore any cached `.so`. |
+| `--args <...>` | Arguments to pass through to the program when run. |
 
 ## The Pylon language
 
