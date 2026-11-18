@@ -12,6 +12,8 @@ straight into Cython so the hot paths run at C speed. This means that Pylon can 
 .pylon source  →  Pylon AST  →  Cython .pyx  →  C (.c)  →  native .so  →  run
 ```
 
+### Check out the documentation [here:](https://pylon-334995bc.mintlify.site/getting-started)
+
 ## Why
 
 Python is an amazing language. It is simple, readable and easy to learn and use, while still being very powerful. On the other hand, languages like Java feature clear type declarations and tidier syntax using {} and semicolons, which can make code easier and cleaerer to read in some cases. It is also much closer to the syntax of many other languages.
